@@ -1,28 +1,16 @@
 "use client";
 
 import { forwardRef } from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   children: React.ReactNode;
-  animate?: boolean;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant = "primary",
-      size = "md",
-      children,
-      animate = true,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
     const baseClasses =
       "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50";
 
@@ -46,21 +34,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       sizes[size],
       className
     );
-
-    if (animate) {
-      return (
-        <motion.button
-          ref={ref}
-          className={buttonClasses}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          {...props}
-        >
-          {children}
-        </motion.button>
-      );
-    }
 
     return (
       <button ref={ref} className={buttonClasses} {...props}>

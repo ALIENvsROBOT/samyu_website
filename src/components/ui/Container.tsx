@@ -1,17 +1,15 @@
 "use client";
 
 import { forwardRef } from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   size?: "sm" | "md" | "lg" | "xl" | "full";
-  animate?: boolean;
 }
 
 const Container = forwardRef<HTMLDivElement, ContainerProps>(
-  ({ className, children, size = "lg", animate = false, ...props }, ref) => {
+  ({ className, children, size = "lg", ...props }, ref) => {
     const sizes = {
       sm: "max-w-2xl",
       md: "max-w-4xl",
@@ -25,22 +23,6 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>(
       sizes[size],
       className
     );
-
-    if (animate) {
-      return (
-        <motion.div
-          ref={ref}
-          className={containerClasses}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          {...props}
-        >
-          {children}
-        </motion.div>
-      );
-    }
 
     return (
       <div ref={ref} className={containerClasses} {...props}>
