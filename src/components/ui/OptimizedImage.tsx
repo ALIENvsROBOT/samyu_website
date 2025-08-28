@@ -14,6 +14,7 @@ interface OptimizedImageProps extends ImageData {
   onError?: () => void;
 }
 
+
 const OptimizedImage = forwardRef<HTMLImageElement, OptimizedImageProps>(
   (
     {
