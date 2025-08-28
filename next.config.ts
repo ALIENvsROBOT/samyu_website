@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
 
+  // Base path for GitHub Pages (update if using a project repository)
+  basePath: process.env.NODE_ENV === 'production' ? '' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
+
   // Image optimization settings
   images: {
     unoptimized: true, // Required for static export
@@ -21,23 +25,14 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Headers for better performance
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-        ],
-      },
-    ];
+  // TypeScript configuration
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+
+  // ESLint configuration
+  eslint: {
+    ignoreDuringBuilds: false,
   },
 };
 

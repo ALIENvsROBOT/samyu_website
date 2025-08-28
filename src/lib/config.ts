@@ -134,7 +134,7 @@ export const seoConfig = {
 
   // Open Graph
   openGraph: {
-    type: "website",
+    type: "website" as const,
     locale: "en_US",
     siteName: siteConfig.name,
   },
