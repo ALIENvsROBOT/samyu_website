@@ -127,7 +127,7 @@ export const seoConfig = {
 
   // Social media meta tags
   twitter: {
-    card: "summary_large_image",
+    card: "summary_large_image" as const,
     site: "@yourusername",
     creator: "@yourusername",
   },
