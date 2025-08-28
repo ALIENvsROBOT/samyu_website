@@ -11,10 +11,12 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
+  deployments: write
 
 # Allow only one concurrent deployment, skipping runs queued between the in-progress run and latest queued.
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
 
 jobs:
@@ -41,7 +43,7 @@ jobs:
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GH_PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
           publish_branch: gh-pages
           allow_empty_commit: false
