@@ -156,6 +156,33 @@ To use a custom domain:
 2. Update the `CNAME` file in the `public` folder
 3. Update the `url` in `src/lib/config.ts`
 
+## 🚀 Quick Deploy (Windows)
+
+Use the automated deployment scripts for easy publishing:
+
+### **Option 1: Batch File (Simplest)**
+```batch
+# Double-click deploy.bat or run:
+deploy.bat
+```
+
+### **Option 2: PowerShell (Advanced)**
+```powershell
+# Run with commit message:
+.\deploy.ps1 -CommitMessage "Your commit message here"
+
+# Or run interactively:
+.\deploy.ps1
+```
+
+### **Option 3: Manual Deploy**
+```bash
+npm run build
+git add .
+git commit -m "Your commit message"
+git push origin main
+```
+
 ## 📝 Scripts
 
 - `npm run dev` - Start development server
